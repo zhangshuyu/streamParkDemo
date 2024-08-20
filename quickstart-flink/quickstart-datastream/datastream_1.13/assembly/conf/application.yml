@@ -85,7 +85,7 @@ app:
     auto.offset.reset: latest
 
   # es
-  es:
+  es.sink:
     host: mvp-hadoop172:9200,mvp-hadoop173:9200,mvp-hadoop174:9200
     auth:
       user: elastic
