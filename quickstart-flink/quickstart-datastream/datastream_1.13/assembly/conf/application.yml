@@ -79,14 +79,14 @@ flink:
 # kafka source
 app:
   kafka.source:
-    bootstrap.servers: kfk1:9092,kfk2:9092,kfk3:9092
-    topic: test_user
-    group.id: user_01
-    auto.offset.reset: earliest
+    bootstrap.servers: mvp-hadoop82:9092,mvp-hadoop83:9092,mvp-hadoop84:9092,mvp-hadoop85:9092,mvp-hadoop86:9092
+    topic: cloud-platform-saas-servicecore-log
+    group.id: stream_park_test
+    auto.offset.reset: latest
 
-  # mysql
-  jdbc:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: 123456
+  # es
+  es:
+    host: mvp-hadoop172:9200,mvp-hadoop173:9200,mvp-hadoop174:9200
+    auth:
+      user: elastic
+      password: elastic
