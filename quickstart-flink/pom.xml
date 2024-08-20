@@ -28,10 +28,8 @@
     <name>StreamPark-quickstart: quickstart flink parent </name>
 
     <modules>
-        <module>quickstart-apacheflink</module>
         <module>quickstart-datastream</module>
         <module>quickstart-flinksql</module>
-        <module>quickstart-connector</module>
     </modules>
 
     <properties>
