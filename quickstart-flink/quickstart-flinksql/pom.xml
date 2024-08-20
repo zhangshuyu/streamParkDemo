@@ -27,11 +27,8 @@
     <name>StreamPark-quickstart: flinksql quickstart</name>
 
     <modules>
-        <module>flinksql_1.12</module>
         <module>flinksql_1.13</module>
-        <module>flinksql_1.14</module>
         <module>flinksql_1.15</module>
-        <module>flinksql_1.16</module>
     </modules>
 
 </project>
