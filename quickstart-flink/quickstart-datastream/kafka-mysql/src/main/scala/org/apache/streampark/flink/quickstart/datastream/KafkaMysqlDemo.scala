@@ -10,6 +10,7 @@ import org.apache.streampark.flink.connector.jdbc.sink.JdbcSink
 import org.json4s.DefaultFormats
 
 import scala.language.implicitConversions
+import scala.util.Random
 
 object KafkaMysqlDemo extends FlinkStreaming {
 
@@ -32,6 +33,7 @@ object KafkaMysqlDemo extends FlinkStreaming {
         val cid = map.getOrElse("cid", "0")
         log.copy(cid = cid)
       }.filter(log => StringUtils.isNotBlank(log.cid) && !log.cid.equals("0") && !log.cid.equals("null"))
+      .filter(_ => Random.nextInt(100) > 70)
 
 
     JdbcSink().sink[Log](source)(log =>
