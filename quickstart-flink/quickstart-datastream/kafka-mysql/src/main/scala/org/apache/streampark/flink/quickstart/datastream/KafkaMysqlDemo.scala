@@ -37,7 +37,7 @@ object KafkaMysqlDemo extends FlinkStreaming {
     JdbcSink().sink[Log](source)(log =>
       s"""
          |insert into demo_log(`hostname`,`namespace`,`log_type`,`cid`,`message`,`timestamp`)
-         |value('${log.hostname}','${log.namespace}','${log.log_type}','${log.cid}',,'${log.message}','${log.`@timestamp`}')
+         |value('${log.hostname}','${log.namespace}','${log.log_type}','${log.cid}',,'${log.message.replaceAll("'", "")}','${log.`@timestamp`}')
          |""".stripMargin
     )
   }
