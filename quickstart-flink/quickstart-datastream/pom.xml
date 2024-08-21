@@ -30,6 +30,7 @@
         <module>datastream_1.13</module>
         <module>datastream_1.15</module>
         <module>kafka-mysql</module>
+        <module>kafka-kafka</module>
     </modules>
 
 </project>
