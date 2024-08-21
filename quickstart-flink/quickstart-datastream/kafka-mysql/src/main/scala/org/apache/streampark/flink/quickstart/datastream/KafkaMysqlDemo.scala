@@ -33,7 +33,7 @@ object KafkaMysqlDemo extends FlinkStreaming {
         val cid = map.getOrElse("cid", "0")
         log.copy(cid = cid)
       }.filter(log => StringUtils.isNotBlank(log.cid) && !log.cid.equals("0") && !log.cid.equals("null"))
-      .filter(_ => Random.nextInt(100) > 70)
+      .filter(_ => Random.nextInt(100) > 90)
 
 
     JdbcSink().sink[Log](source)(log =>
