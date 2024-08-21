@@ -12,7 +12,7 @@
     <artifactId>kafka-mysql</artifactId>
 
     <packaging>jar</packaging>
-    <name>StreamPark-quickstart: datastream for flink 1.13</name>
+    <name>StreamPark-quickstart: kafka-mysql</name>
 
     <dependencies>
 
