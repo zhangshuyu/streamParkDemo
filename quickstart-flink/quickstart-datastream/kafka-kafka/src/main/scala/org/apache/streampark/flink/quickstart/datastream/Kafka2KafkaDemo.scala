@@ -32,22 +32,21 @@ object Kafka2KafkaDemo extends FlinkStreaming {
           (key, value)
         }).toMap
         val cid = map.getOrElse("cid", "0")
-        log.copy(cid = cid)
-      }.filter(log => StringUtils.isNotBlank(log.cid) && !log.cid.equals("0") && !log.cid.equals("null"))
-      .filter(_ => Random.nextInt(100) > 90)
-      .map(l => JsonUtils.write(l))
+        log.copy(cid = cid, num = Random.nextInt(100))
+      }.filter(log => StringUtils.isNotBlank(log.cid) && !log.cid.equals("0") && !log.cid.equals("null") && log.num > 95)
 
 
-//    JdbcSink().sink[Log](source)(log =>
-//      s"""
-//         |insert into demo_log(`hostname`,`namespace`,`log_type`,`cid`,`timestamp`)
-//         |value('${log.hostname}','${log.namespace}','${log.log_type}','${log.cid}','${log.`@timestamp`}')
-//         |""".stripMargin
-//    )
-    KafkaSink().sink(source)
+    JdbcSink().sink[Log](source)(log =>
+      s"""
+         |insert into demo_log(`hostname`,`namespace`,`log_type`,`cid`,`timestamp`,`num`)
+         |value('${log.hostname}','${log.namespace}','${log.log_type}','${log.cid}','${log.`@timestamp`}',${log.num})
+         |""".stripMargin
+    )
+    KafkaSink().sink(source.map(l => JsonUtils.write(l))
+    )
   }
 
 }
 
-case class Log(hostname: String, namespace: String, log_type: String, cid: String, message: String, `@timestamp`: String) extends Serializable
+case class Log(hostname: String, namespace: String, log_type: String, cid: String, message: String, `@timestamp`: String, num: Int = 0) extends Serializable
 
