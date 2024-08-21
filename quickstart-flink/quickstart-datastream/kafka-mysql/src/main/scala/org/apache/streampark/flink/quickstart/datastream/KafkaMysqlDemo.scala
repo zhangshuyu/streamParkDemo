@@ -31,13 +31,13 @@ object KafkaMysqlDemo extends FlinkStreaming {
         }).toMap
         val cid = map.getOrElse("cid", "0")
         log.copy(cid = cid)
-      }.filter(log => StringUtils.isNotBlank(log.cid) && (!log.cid.equals("0")) || !log.cid.equals("null"))
+      }.filter(log => StringUtils.isNotBlank(log.cid) && !log.cid.equals("0") && !log.cid.equals("null"))
 
 
     JdbcSink().sink[Log](source)(log =>
       s"""
-         |insert into demo_log(`hostname`,`namespace`,`log_type`,`cid`,`message`,`timestamp`)
-         |value('${log.hostname}','${log.namespace}','${log.log_type}','${log.cid}','${log.message.replaceAll("'", "")}','${log.`@timestamp`}')
+         |insert into demo_log(`hostname`,`namespace`,`log_type`,`cid`,`timestamp`)
+         |value('${log.hostname}','${log.namespace}','${log.log_type}','${log.cid}','${log.`@timestamp`}')
          |""".stripMargin
     )
   }
