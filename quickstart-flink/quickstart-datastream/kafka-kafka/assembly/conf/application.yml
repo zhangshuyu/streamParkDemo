@@ -84,8 +84,14 @@ app:
     group.id: stream_park_test
     auto.offset.reset: latest
 
-  # mysql
+  # kafka
   kafka.sink:
     bootstrap.servers: mvp-hadoop82:9092,mvp-hadoop83:9092,mvp-hadoop84:9092,mvp-hadoop85:9092,mvp-hadoop86:9092
     topic: stream-park-test
 
+  # mysql
+  jdbc:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://10.201.10.155:3306/onegame_mgt_test?useSSL=false&allowPublicKeyRetrieval=true
+    username: bigdata
+    password: bigdata
