@@ -24,7 +24,7 @@
     <artifactId>datastream_1.13</artifactId>
 
     <packaging>jar</packaging>
-    <name>StreamPark-quickstart: datastream for flink 1.13</name>
+    <name>StreamPark-quickstart: kafka es</name>
 
     <dependencies>
 
