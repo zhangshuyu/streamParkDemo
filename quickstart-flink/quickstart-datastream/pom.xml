@@ -27,7 +27,7 @@
     <name>StreamPark-quickstart: dataStream quickstart</name>
 
     <modules>
-        <module>datastream_1.13</module>
+        <module>kafka-es</module>
         <module>datastream_1.15</module>
         <module>kafka-mysql</module>
         <module>kafka-kafka</module>
